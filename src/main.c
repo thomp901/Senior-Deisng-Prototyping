@@ -30,6 +30,6 @@ void adc_setup() {
 
         uint16_t read_brightness = read_adc();
         printf("Brightness Result: %u\r", read_brightness);
-        sleep_ms(100)
+        sleep_ms(100);
     }
 }
