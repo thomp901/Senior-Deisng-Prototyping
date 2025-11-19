@@ -22,7 +22,8 @@
 #define __MPL3115A2__
 
 //#include "Arduino.h"
-#include <Adafruit_I2CDevice.h>
+#include "Adafruit_I2CDevice.h"
+#include "hardware/i2c.h"
 
 #define MPL3115A2_ADDRESS (0x60) ///< default I2C address 1100000
 
@@ -123,7 +124,7 @@ typedef enum {
 class Adafruit_MPL3115A2 {
 public:
   Adafruit_MPL3115A2();
-  boolean begin(TwoWire *twoWire = &Wire);
+  bool begin(i2c_inst_t *i2c_instance = i2c0);
   float getPressure(void);
   float getAltitude(void);
   int8_t getAltitudeOffset(void);
