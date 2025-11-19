@@ -28,6 +28,7 @@
  *
  */
 
+#include "pico/time.h"
 #include "Adafruit_MPL3115A2.h"
 
 /*!
@@ -41,7 +42,7 @@ Adafruit_MPL3115A2::Adafruit_MPL3115A2() {}
  *           Optional TwoWire I2C object
  *   @return true on successful startup, false otherwise
  */
-boolean Adafruit_MPL3115A2::begin(TwoWire *twoWire) {
+bool Adafruit_MPL3115A2::begin(i2c_inst_t *i2c_instance) {
   if (i2c_dev)
     delete i2c_dev;
   i2c_dev = new Adafruit_I2CDevice(MPL3115A2_ADDRESS, twoWire);
