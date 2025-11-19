@@ -19,6 +19,8 @@ void init_i2c() { //This snippet is from the SDK Functions Documentation
 
 int main() {
     stdio_init_all();
+    sleep_ms(2000);
+
     init_i2c();
 
     int32_t init_status = baro_init(); //Calling the C++
@@ -42,5 +44,5 @@ int main() {
    sleep_ms(1000);
 
    }
-    
+   return 0;
 }
