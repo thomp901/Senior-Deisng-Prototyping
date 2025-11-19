@@ -15,8 +15,8 @@ static Adafruit_MPL3115A2 baro;
 // Ensure C-style linking for the function DEFINITIONS
 extern "C" {
     
-    int32_t baro_init(void) {
-        return baro.begin();
+    int32_t baro_init() {
+        return baro.begin(i2c0);
     }
 
     float baro_get_pressure_pascal(void) {
