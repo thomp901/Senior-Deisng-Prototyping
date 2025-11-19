@@ -27,7 +27,7 @@ uint8_t *read_buffer, size_t read_len,
 bool stop = false);
 bool setSpeed(uint32_t desiredclk); // This might be ignored/unnecessary
 
-size_t maxBufferSize() { return _maxBufferSize; }
+size_t maxBufferSize();
 
 private:
 uint8_t _addr;
