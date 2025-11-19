@@ -9,9 +9,10 @@ extern "C" {
 #endif
 
 // Function Prototypes for C-compatible functions
-int32_t baro_init(void); 
-float baro_get_pressure_pascal(void);
-float baro_get_altitude_meters(void);
+int32_t baro_init(); 
+float baro_get_pressure_pascal();
+float baro_get_altitude_meters();
+float baro_get_temperature();
 
 #ifdef __cplusplus
 // Close the extern "C" block
