@@ -16,14 +16,16 @@ static Adafruit_MPL3115A2 baro;
 extern "C" {
     
     int32_t baro_init() {
-        return baro.begin(i2c0);
+        //return baro.begin(i2c0);
+        bool success = baro.begin(i2c0);
+        return success ? 0 : -1;
     }
 
-    float baro_get_pressure_pascal(void) {
+    float baro_get_pressure_pascal() {
         return baro.getPressure();
     }
     
-    float baro_get_altitude_meters(void) {
+    float baro_get_altitude_meters() {
         return baro.getAltitude();
     }
 
