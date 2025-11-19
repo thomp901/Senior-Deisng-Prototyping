@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 #include "pico/stdlib.h"
 #include "hardware/timer.h"
 #include "hardware/irq.h"
@@ -38,17 +37,12 @@ int main() {
    // int32_t temperature_reading = baro_get_altitude_meters();
    // float temperature = baro_getTemperature();
 
-    while(true) {
-        float pressure_reading = baro_get_pressure_pascal();
-        float temperature = baro_get_temperature();
+   while(true) {
+   float pressure_reading = baro_get_pressure_pascal();
+   float temperature = baro_get_temperature();
+   printf("Temperature: %.2f Celcius, Pressure %.2f Pascal\n", temperature, pressure_reading);
+   sleep_ms(1000);
 
-        // Diagnostic: Print raw values and check for NaN
-        if (isnan(pressure_reading) || isnan(temperature)) {
-            printf("ERROR: Sensor returned NaN! Pressure: %f, Temperature: %f\n", pressure_reading, temperature);
-        } else {
-            printf("Temperature: %.2f Celcius, Pressure %.2f Pascal\n", temperature, pressure_reading);
-        }
-        sleep_ms(1000);
-    }
-    return 0;
+   }
+   return 0
 }
