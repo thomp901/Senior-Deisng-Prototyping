@@ -164,7 +164,7 @@ void Adafruit_MPL3115A2::startOneShot(void) {
   // wait for one-shot to clear before proceeding
   _ctrl_reg1.reg = read8(MPL3115A2_CTRL_REG1);
   while (_ctrl_reg1.bit.OST) {
-    delay(10);
+    sleep_ms(10000);
     _ctrl_reg1.reg = read8(MPL3115A2_CTRL_REG1);
   }
   // initiate one-shot measurement
