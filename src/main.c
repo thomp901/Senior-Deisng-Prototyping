@@ -10,7 +10,7 @@
 #include "mpl3115a2_interface.h"
 
 void init_i2c() { //This snippet is from the SDK Functions Documentation
-    i2c_init(i2c_default, 100 * 1000);
+    i2c_init(i2c0, 100 * 1000);
     gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
     gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
@@ -21,7 +21,15 @@ int main() {
     stdio_init_all();
     init_i2c();
 
-    baro_init(); //Calling the C++
+    int32_t init_status = baro_init(); //Calling the C++
+
+    if (init_status) {
+        printf("Barometer Initialization FAILED!\n");
+        while(true) { sleep_ms(5000); }
+    } else {
+        printf("Barometer Initialization SUCCESS.\n");
+    }
+
 
     //int32_t pressure_reading = baro_get_pressure_pascal();
    // int32_t temperature_reading = baro_get_altitude_meters();
