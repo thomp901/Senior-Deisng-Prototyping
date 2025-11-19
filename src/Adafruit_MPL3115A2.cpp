@@ -45,7 +45,7 @@ Adafruit_MPL3115A2::Adafruit_MPL3115A2() {}
 bool Adafruit_MPL3115A2::begin(i2c_inst_t *i2c_instance) {
   if (i2c_dev)
     delete i2c_dev;
-  i2c_dev = new Adafruit_I2CDevice(MPL3115A2_ADDRESS, twoWire);
+  i2c_dev = new Adafruit_I2CDevice(MPL3115A2_ADDRESS, i2c_instance);
   if (!i2c_dev->begin())
     return false;
 
@@ -58,7 +58,7 @@ bool Adafruit_MPL3115A2::begin(i2c_inst_t *i2c_instance) {
   // software reset
   write8(MPL3115A2_CTRL_REG1, MPL3115A2_CTRL_REG1_RST);
   while (read8(MPL3115A2_CTRL_REG1) & MPL3115A2_CTRL_REG1_RST)
-    delay(10);
+    sleep_ms(10000);
 
   // set oversampling and altitude mode
   currentMode = MPL3115A2_ALTIMETER;
@@ -82,7 +82,7 @@ float Adafruit_MPL3115A2::getPressure() {
     setMode(MPL3115A2_BAROMETER);
   startOneShot();
   while (!conversionComplete())
-    delay(10);
+    sleep_ms(10000);
   return getLastConversionResults(MPL3115A2_PRESSURE);
 }
 
@@ -95,7 +95,7 @@ float Adafruit_MPL3115A2::getAltitude() {
     setMode(MPL3115A2_ALTIMETER);
   startOneShot();
   while (!conversionComplete())
-    delay(10);
+    sleep_ms(10000);
   return getLastConversionResults(MPL3115A2_ALTITUDE);
 }
 
@@ -140,7 +140,7 @@ void Adafruit_MPL3115A2::setSeaPressure(float SLP) {
 float Adafruit_MPL3115A2::getTemperature() {
   startOneShot();
   while (!conversionComplete())
-    delay(10);
+    sleep_ms(10000);
   return getLastConversionResults(MPL3115A2_TEMPERATURE);
 }
 
