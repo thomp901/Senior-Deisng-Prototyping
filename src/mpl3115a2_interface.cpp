@@ -26,4 +26,8 @@ extern "C" {
     float baro_get_altitude_meters(void) {
         return baro.getAltitude();
     }
+
+    float baro_get_temperature() {
+        return baro.getTemperature();
+    }
 }
