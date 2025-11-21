@@ -23,14 +23,14 @@ int main() {
 
     init_i2c();
 
-    int32_t init_status = baro_init(); //Calling the C++
+    // int32_t init_status = baro_init(); //Calling the C++
 
-    if (init_status) {
-        printf("Barometer Initialization FAILED!\n");
-        while(true) { sleep_ms(5000); }
-    } else {
-        printf("Barometer Initialization SUCCESS.\n");
-    }
+    // if (init_status) {
+    //     printf("Barometer Initialization FAILED!\n");
+    //     while(true) { sleep_ms(5000); }
+    // } else {
+    //     printf("Barometer Initialization SUCCESS.\n");
+    // }
 
 
     //int32_t pressure_reading = baro_get_pressure_pascal();
@@ -44,5 +44,5 @@ int main() {
    sleep_ms(1000);
 
    }
-   return 0
+   return 0;
 }
